@@ -7,6 +7,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "prepare": "husky install",
+    "commit": "cz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.1",
     "nodemon": "^2.0.19"
   },
@@ -34,5 +36,10 @@
     "morgan": "^1.10.0",
     "validator": "^13.7.0",
     "xss-clean": "^0.1.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
