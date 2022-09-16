@@ -9,6 +9,8 @@ const app = express();
 /* Imports */
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+
+const authRouter = require('./routes/authRoutes');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -20,6 +22,8 @@ app.use(morgan('tiny'));
 app.get('/', (req, res)=>{
   res.send('Hello, E-Commerce API');
 })
+
+app.use('/api/v1/auth', authRouter);
 
 /* Error handlers */
 app.use(notFound);
