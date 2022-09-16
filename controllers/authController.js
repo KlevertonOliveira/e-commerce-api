@@ -1,6 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 const { BadRequestError } = require('../errors');
 const User = require('../models/User');
+const jwt = require('../utils');
 
 const register = async(req, res) => {
   
@@ -15,7 +16,13 @@ const register = async(req, res) => {
   const role = isFirstAccount ? 'admin' : 'user';
 
   const user = await User.create({ name, email, password, role });
-  return res.status(StatusCodes.CREATED).json({ user })
+  const tokenUser = { name: user.name, role: user.role, userId: user._id }
+
+  const token = jwt.createJWT({ payload: tokenUser});
+
+  return res.status(StatusCodes.CREATED).json({ 
+    user: tokenUser, token
+   })
 }
 
 const login = async(req, res) => {
