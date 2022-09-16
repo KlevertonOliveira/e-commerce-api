@@ -8,12 +8,13 @@ const app = express();
 
 /* Imports */
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 
-
 /* Middleware */
 app.use(express.json());
+app.use(morgan('tiny'));
 
 /* Routes */
 app.get('/', (req, res)=>{
