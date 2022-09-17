@@ -1,9 +1,9 @@
 const { StatusCodes } = require('http-status-codes');
-const { BadRequestError } = require('../errors');
-const { attachCookiesToResponse } = require('../utils');
-const User = require('../models/User');
+const { BadRequestError } = require('../../errors')
+const { attachCookiesToResponse } = require('../../utils');
+const User = require('../../models/User');
 
-const register = async(req, res) => {
+async function register(req, res){
   
   const { name, email, password } = req.body;
 
@@ -25,20 +25,4 @@ const register = async(req, res) => {
   .json({ user: tokenUser })
 }
 
-const login = async(req, res) => {
-  return res.status(StatusCodes.OK).json({
-    message: 'Login route'
-  })
-}
-
-const logout = async(req, res) => {
-  return res.status(StatusCodes.CREATED).json({
-    message: 'Logout route'
-  })
-}
-
-module.exports = {
-  register,
-  login, 
-  logout
-}
+module.exports = register;
