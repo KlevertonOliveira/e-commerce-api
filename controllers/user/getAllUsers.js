@@ -1,9 +1,10 @@
 const { StatusCodes } = require('http-status-codes');
+const User = require('../../models/User');
 
 async function getAllUsers(req, res){
-  return res.status(StatusCodes.OK).json({
-    message: 'Get all users route'
-  })
+
+  const users = await User.find({ role: 'user' }).select('-password');
+  return res.status(StatusCodes.OK).json({ users })
 }
 
 module.exports = getAllUsers;
