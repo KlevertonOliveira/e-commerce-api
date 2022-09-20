@@ -1,6 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
 const { BadRequestError } = require('../../errors')
-const { attachCookiesToResponse } = require('../../utils');
+const { attachCookiesToResponse, createTokenUser } = require('../../utils');
 const User = require('../../models/User');
 
 async function register(req, res){
@@ -16,7 +16,7 @@ async function register(req, res){
   const role = isFirstAccount ? 'admin' : 'user';
 
   const user = await User.create({ name, email, password, role });
-  const tokenUser = { name: user.name, role: user.role, userId: user._id }
+  const tokenUser = createTokenUser(user);
 
   attachCookiesToResponse({ res, user: tokenUser });
   
