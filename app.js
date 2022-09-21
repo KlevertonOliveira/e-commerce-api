@@ -10,6 +10,7 @@ const app = express();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 
 const authRouter = require('./routes/authRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -22,6 +23,8 @@ const errorHandler = require('./middleware/errorHandler');
 app.use(morgan('tiny'));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
+app.use(express.static('./public'));
+app.use(fileUpload());
 
 /* Routes */
 app.get('/', (req, res)=>{
