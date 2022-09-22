@@ -10,7 +10,7 @@ async function getSingleUser(req, res){
 
   if(!user){
     throw new NotFoundError(`No user found with id ${userId}`);
-  }
+  } 
 
   checkPermission(req.user, user._id);
   return res.status(StatusCodes.OK).json({ user })

@@ -12,6 +12,7 @@ async function updateUserPassword(req, res){
   const user = await User.findById(req.user.id);
 
   const isPasswordCorrect = await user.comparePassword(oldPassword);
+  
   if(!isPasswordCorrect){
     throw new UnauthenticatedError(`Invalid Credentials`);
   }

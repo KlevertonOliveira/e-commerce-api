@@ -9,7 +9,7 @@ async function updateUser(req, res){
 
   if(!name || !email){
     throw new BadRequestError('Please, provide name and email values');
-  }
+  } 
 
   const user = await User.findByIdAndUpdate(
     req.user.id,
