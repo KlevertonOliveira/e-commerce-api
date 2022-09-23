@@ -1,7 +1,13 @@
 const { StatusCodes } = require('http-status-codes');
+const Review = require('../../models/Review');
 
 async function getAllReviews(req, res){
-  return res.status(StatusCodes.OK).send('get all reviews route');
+  const reviews = await Review.find({});
+  
+  return res.status(StatusCodes.OK).json({
+    count: reviews.length, 
+    reviews 
+  });
 }
 
 module.exports = getAllReviews;
