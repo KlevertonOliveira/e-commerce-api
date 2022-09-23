@@ -4,7 +4,7 @@ const Product = require('../../models/Product');
 
 async function getSingleProduct(req, res){
   const { id: productId } = req.params;
-  const product = await Product.findById(productId);
+  const product = await Product.findById(productId).populate('reviews');
 
   if(!product) throw new NotFoundError(`No product found with id ${productId}`);
 
