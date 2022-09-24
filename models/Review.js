@@ -61,12 +61,10 @@ ReviewSchema.statics.calculateReviewsAverageRating = async function(productId){
 
 ReviewSchema.post('save', async function(){
   await this.constructor.calculateReviewsAverageRating(this.product);
-  console.log('POST SAVE');
 });
 
 ReviewSchema.post('remove', async function(){
   await this.constructor.calculateReviewsAverageRating(this.product);
-  console.log('POST REMOVE');
 })
 
 module.exports = mongoose.model('Review', ReviewSchema);
