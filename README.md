@@ -1,5 +1,5 @@
 # :money_with_wings: E-COMMERCE-API (English | Português)
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/KlevertonOliveira/image-searcher/blob/master/license)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/KlevertonOliveira/e-commerce-api/blob/main/license)
 
 - Table of Contents | Indíce
   - [:link: Links](#link-links)
